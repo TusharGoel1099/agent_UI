@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel= "stylesheet" type= "text/css" href= "../static/css/bootstrap.min.css">
+    <link rel= "stylesheet" type= "text/css" href= "../static/css/default.css">
+    <link rel= "stylesheet" type= "text/css" href= "../static/css/sidebar-nav.min.css">
+    <link rel= "stylesheet" type= "text/css" href= "../static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    
+<style>
+
+
+
+
+
+
+
+
+    body {
+      margin: 0;
+      font-family: "Lato", sans-serif;
+    }
+    
+    .sidebar {
+      margin:0;
+      padding: 0;
+      width: 240px;
+      background:url("https://miro.medium.com/max/1864/1*ZhuqSg8Jmz4p8H6X5U1uzQ.png") repeat-y scroll left top transparent;
+      position: fixed;
+      height: 100%;
+      overflow: auto;
+    }
+    
+    
+    .sidebar a {
+      display: block;
+      color: black;
+      padding: 16px;
+      font-size: 18px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+     
+    .sidebar a.active {
+      background-color: #4CAF50;
+      color: white;
+    }
+    
+    .sidebar a:hover:not(.active) {
+      background-color:black;
+      color: white;
+      z-index: 2;
+      overflow: visible;
+  
+      transform: scale(1.1);
+      animation: bounce 1s;
+      opacity: 1.0
+    }
+    
+    div.content {
+      margin-left: 200px;
+      padding: 1px 16px;
+      height: 1000px;
+    }
+    
+    @media screen and (max-width: 700px) {
+      .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+      }
+      .sidebar a {float: left;}
+      div.content {margin-left: 0;}
+    }
+    
+    @media screen and (max-width: 400px) {
+      .sidebar a {
+        text-align: center;
+        float: none;
+      }
+    }
+
+
+
+
+  
+  @keyframes bounce {
+      0%, 20%, 60%, 100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+      }
+    
+      40% {
+        -webkit-transform: translateY(-20px);
+        transform: translateY(-20px);
+      }
+    
+      80% {
+        -webkit-transform: translateY(-10px);
+        transform: translateY(-10px);
+      }
+    }
+  
+ 
+    @media screen and (max-width: 700px) {
+      .smallsidenav {
+        text-align: right;
+        
+      }
+      .smallsidenav #chart_div{
+        display: inline-block;
+        margin: 0 auto;
+      }
+      .smallsidenav #chart_div2{
+        display: inline-block;
+        margin: 0 auto;
+      }
+      .smallsidenav #chart_div3{
+        display: inline-block;
+        margin: 0 auto;
+      }
+      
+    }
+   
+  td, th {
+      text-align: left;
+      padding: 8px;
+    }
+    .smallsidenav {
+      height: 90%;
+      width: 0;
+      border-radius: 25px;
+      position: fixed;
+      z-index: 1;
+      right: 0px;
+      top:40px;
+      background-color: white;
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding-top: 60px;
+    }
+    
+    .smallsidenav a {
+      padding: 8px 8px 8px 32px;
+      text-decoration: none;
+      font-size: 25px;
+      color: #818181;
+      display: block;
+      transition: 0.3s;
+    }
+    
+    .smallsidenav a:hover {
+      color: #f1f1f1;
+    }
+    
+    .smallsidenav .closebtn {
+      position: absolute;
+      top: 0;
+      right: 25px;
+      font-size: 36px;
+      margin-left: 50px;
+
+    }
+
+    footer {
+      text-align: center;
+      padding: 3px;
+      background-color:darkgray;
+      color:black;
+    }
+
+  
+
+    
+</style>
+  </head>
+
+<body class="fix-header">
+
+  
+    
+        <div class="sidebar">
+            
+            
+            <br><br> <br><br> 
+                    <a href="/#" class="waves-effect" ></i>Department1</a>
+                    <br><br>
+            
+                
+                    <a href="/#" class="waves-effect"></i>Department2</a>
+                    <br><br>
+                    <a href="/#" class="waves-effect"></i>Department3</a>
+                    <br><br>
+                    <a href="/#" class="waves-effect"></i>Department4</a>
+                  
+
+
+            
+            
+        
+        
+    </div>
+
+
+
+      
+
+
+      
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="row bg-title" style="background-color: #333;">
+                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                        <h4 class="page-title" style="color:white;float:left;">REAL TIME DASHBOARD</h4> </div>
+                    
+                        <i class="fa fa-user" style="font-size:42px;color:red;float:right;"></i>
+                    
+                        
+                        
+                    
+              
+                </div>
+              
+                <div class="row">
+                    <div class="col-lg-4 col-sm-6 col-xs-12">
+                        <div class="white-box">
+                            <h3 class="box-title">Total1</h3>
+                            <ul class="list-inline two-part">
+                                <li>
+                                    <div id="sparklinedash"></div>
+                                </li>
+                                <li class="text-right"><i class="ti-arrow-up text-success"></i> <span class="counter text-success">100</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 col-xs-12">
+                        <div class="white-box">
+                            <h3 class="box-title">Total2</h3>
+                            <ul class="list-inline two-part">
+                                <li>
+                                    <div id="sparklinedash2"></div>
+                                </li>
+                                <li class="text-right"><i class="ti-arrow-up text-purple"></i> <span class="counter text-purple">101</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 col-xs-12">
+                        <div class="white-box">
+                            <h3 class="box-title">Total3</h3>
+                            <ul class="list-inline two-part">
+                                <li>
+                                    <div id="sparklinedash3"></div>
+                                </li>
+                                <li class="text-right"><i class="ti-arrow-up text-info"></i> <span class="counter text-info">103</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+              
+                <div class="row">
+
+
+                    <div class="col-xs-6 col-md-4">
+                        <div class="white-box">
+                            <h3 class="box-title">Total2</h3>
+                            <ul class="list-inline two-part">
+                                <li>
+                                    <div id="sparklinedash2"></div>
+                                </li>
+                                <li class="text-right"><i class="ti-arrow-up text-purple"></i> <span class="counter text-purple">101</span></li>
+                                <li class="text-right"><i class="ti-arrow-up text-purple"></i> <span class="counter text-purple">101</span></li>
+                                <li class="text-right"><i class="ti-arrow-up text-purple"></i> <span class="counter text-purple">101</span></li>
+                            
+                            </ul>
+                        </div>
+                    </div>
+
+
+                    
+            
+          
+            </div>
+            
+            <footer>
+                <p>MY FOOTER<br>
+                
+              </footer>
+            
+        </div>
+    
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    
+</script>
+
+  </body>
+
+
+</html>
