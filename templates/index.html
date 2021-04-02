@@ -15,60 +15,108 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     
-<style>
+  <style>
 
-    body {
-      margin: 0;
-      font-family: "Lato", sans-serif;
-      background-color: #fff;
-    }
-    
-    div.content {
-      margin-left: 200px;
-      padding: 1px 16px;
-      height: 1000px;
-    } 
-    .scroll{
-      border-collapse: collapse;
-      margin: 25px 0;
-      font-size: 0.9em;
-      font-family: sans-serif;
-      min-width: 400px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+      body {
+        margin: 0;
+        font-family: "Lato", sans-serif;
+        background-color: #fff;
+      }
+      .dropbtn {
+        background-color: aliceblue;
+        color: black;
+        padding: 5px;
+        font-size: 14px;
+        border: none;
+        min-width: 140px;
+        border-style: outset;
+        border-radius:15px;
+      }
+      .dropdown {
+        position: absolute;
+        display: inline-block;
+        z-index: 2;
+      }
+ 
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #e8eff0;
+        min-width: 120px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        border-style: outset;
+        text-decoration: none;
+        border-radius:15px;
+        font-family: serif;
+      }
+ 
+      .dropdown-content a {
+        color: black;
+        padding: 12px 10px;
+        display: block;
+        width: 120px;
+        text-decoration: none;
+        margin-right: 0px;
+      }
+ 
+      .dropdown-content a:hover {
+        background-color: #ddd;
+        border-radius:15px;
+        width:140px;
+      }
+ 
+      .dropdown:hover .dropdown-content {
+        display: block;
+        z-index: 2;
+        position: relative;
+      }
+ 
+      .dropdown:hover .dropbtn {
+        background-color: #91b1c7;
+      }
+      div.content {
+        margin-left: 200px;
+        padding: 1px 16px;
+        height: 1000px;
+      } 
+      /*margin: 25px 0;*/
+      .scroll{
+        border-collapse: collapse;
 
-    }
-    .scroll thead tr {
-      background-color:#009879;
-      color:  white;
-      text-align: center;
-      font-size:20px;
-  }
-    .scroll tbody tr {
-      border-bottom: 1px solid #dddddd;
-      font-size:20px;
-  }
-  
-  .scroll tbody tr:nth-of-type(even) {
-      background-color: #f3f3f3;
-  }
-  
-  .scroll tbody tr:last-of-type {
-      border-bottom: 2px solid #009879;
-  }
-  .scroll tbody tr.active-row {
-    font-weight: bold;
-    color: #009879;
-}
-  
-    
-    
-    .scroll th,
-.scroll td {
-    padding: 12px 15px;
-    text-align: center;
-}
-
-    
+        margin: auto;
+        font-size: 0.9em;
+        font-family: sans-serif;
+        min-width: 400px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+      }
+      .scroll thead tr {
+        background-color:#9999FF;
+        color:  white;
+        text-align: center;
+        font-size:20px;
+      }
+      .scroll thead th{
+      	color:black;
+      }
+      .scroll tbody tr {
+        border-bottom: 1px solid #9999FF;
+        font-size:20px;
+      }
+      .scroll tbody tr:nth-of-type(even) {
+        background-color: #f3f3f3;
+      }
+      .scroll tbody tr:last-of-type {
+        border-bottom: 2px solid #9999FF;
+      }
+      .scroll tbody tr.active-row {
+        font-weight: bold;
+        color: #009879;
+      }   
+      .scroll th,
+      .scroll td {
+        padding: 12px 15px;
+        text-align: center;
+      }   
     @media screen and (max-width: 700px) {
       .sidebar {
         width: 100%;
@@ -87,8 +135,7 @@
         text-align: center;
         float: none;
       }
-    }
-    
+    }   
   @keyframes bounce {
       0%, 20%, 60%, 100% {
         -webkit-transform: translateY(0);
@@ -102,36 +149,7 @@
         -webkit-transform: translateY(-10px);
         transform: translateY(-10px);
       }
-  }
-
-    .open-button {
-      background-color: rgb(20, 12, 12);
-      color: white;
-      padding: 10px 2px;
-      border: none;
-      cursor: pointer;
-      opacity: 0.8;
-      position: fixed;
-      bottom: 23px;
-      left: 4px;
-      width: 180px;
-      border-style: outset;
-      border-radius: 20px;
     }
-     
-    /* The popup chat - hidden by default */
-    .chat-popup {
-      display: none;
-      position: fixed;
-      bottom: 0;
-      right: 15px;
-      border: 3px solid #bbb9b9;
-      border-style: ridge;
-      border-radius: 20px;
-      z-index: 9;
-    }
-     
-    /* Add styles to the form container */
     .form-container {
       max-width: 300px;
       height: 350px;
@@ -144,8 +162,6 @@
       overflow:auto;
       text-align: justify;
     }
-     
-    /* Add a red background color  */
     .notavailabledot {
       height: 12px;
       width: 12px;
@@ -162,7 +178,6 @@
       display: inline-block;
       margin-right: 5px;
     }
-    /* Add some hover effects to buttons */
     .form-container .btn:hover, .open-button:hover {
       opacity: 1;
     }
@@ -172,137 +187,121 @@
     }
     #chart_div::-webkit-scrollbar {
       display: none;
-  }
-
-  .container-fluid{padding-left:25px;
-    padding-right:25px;
-    padding-bottom:15px}
-</style>
+    }
+    .container-fluid{
+      padding-left:25px;
+      padding-right:25px;
+      padding-bottom:10px
+    }
+    
+  </style>
 </head>
 
 <body onload="drwaa('Hello')">
-
-
-
-
     
-      
+  <div class="page-wrapper">   
+    <div class="container-fluid" style="background-color: aliceblue">   
+        <div class="row bg-title" style="background-color: #333;">
 
-    <div class="page-wrapper">
+          <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+          	 
+            <h3 class="counter text-black" style="color:white;left:200px;">
+
+
+            	<strong>REAL TIME DASHBOARD</strong></h3> 
+          </div>  
+        <div class="dropdown" style="right: 100px;">
+          <button class="dropbtn">Select Department</button>
+            <div class="dropdown-content" style="text-align: center;">
+                <a href="#">Department 1</a>
+                <a href="#">Department 2</a>
+                <a href="#">Department 3</a>
+            </div>
+        </div>   
+        <i class="fa fa-user" style="font-size:45px;color:red;float:right;"></i>
+      </div>
             
-            <div class="container-fluid" style="background-color: aliceblue">
-
-                <div class="row bg-title" style="background-color: #333;">
-                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title" style="color:white;float:left;">REAL TIME DASHBOARD</h4> 
-                    </div>     
-                        <i class="fa fa-user" style="font-size:30px;color:red;float:right;"></i>         
-                </div>
                 <div class="row">
                     <div class="col-6 col-md-4">
-                        <div class="white-box" style="background:-webkit-linear-gradient(110deg, lightyellow , #ffed4b )" >
-                            <h1 class="box-title"><strong>Total Chats</strong></h1>
+                        <div class="white-box" style="background:-webkit-linear-gradient(110deg, lightyellow , #f5e23d )" >
+                            <h1 class="box-title"><strong>Total Chats : Today</strong></h1>
                             <h2 class="counter text-black"><strong>63</strong></h2>
-                            <i class="fa fa-comment" style="float:right;font-size:24px"></i>
-                            
-                            
+                            <i class="fa fa-comment" style="float:right;font-size:26px"></i>
+                            <br>
                         </div>
                     </div>
-                    
                     <div class="col-6 col-md-4">
                         <div class="white-box" style="background:-webkit-linear-gradient(110deg, lightblue ,#3366FF )" >
-                            <h1 class="box-title"><strong>Chat duration</strong></h1>
+                            <h1 class="box-title"><strong>Chat duration : Today</strong></h1>
                             <h2 class="counter text-black"><strong>2 hr</strong></h2>
-                            <i class="fa fa-calendar-check-o" style="float:right;font-size:24px"></i>
+                            <i class="fa fa-calendar-check-o" style="float:right;font-size:26px"></i>
+                            <br>
                           </div>
-                
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="white-box" style="background:-webkit-linear-gradient(110deg, lightgreen , #00cc00 )" >
                             <h1 class="box-title"><strong>Ongoing Chats</strong></h1>
                             <h2 class="counter text-black"><strong>43</strong></h2>
-                            <i class="fa fa-comments-o" style="float:right;font-size:24px"></i>
+                            <i class="fa fa-comments-o" style="float:right;font-size:26px"></i>
+                            <br>
                           </div>
-                    </div>
-                    
+                    </div>  
                 </div>
+
                 <div class="row">
-
-
-
                     <div class="col-xs-12 col-md-4">
                         <div class="white-box">
-                              <h3 class="box-title"><strong>Operator Status</strong></h3>
-                            
+                              <h3 class="box-title"><strong>Operator Status</strong></h3>   
                               <div id="piechart"></div>
-                            </div>
-                      </div>
-
+                        </div>
+                    </div>
                     <div class="col-xs-12 col-md-8">
                         <div class="white-box">
-                          <h3 class="box-title"><strong>Chat Record</strong></h3>
-                          
-                          <div id="chart_div" style="overflow-x: scroll">
-                           </div>
+                            <h3 class="box-title"><strong>Chat Tracker</strong></h3>
+                            <div id="chart_div" style="overflow-x: scroll"></div>
+                         </div>
+                    </div>
+                </div>
+
+                <div class="row"> 
+                    <div class="col-xs-14 col-md-12">
+                      <div class="white-box">
+                        <div style="overflow-x:auto;">
+                          <table class="scroll" >
+                            <thead>
+                              <th>Name</th>
+                              <th>Email</th>  
+                              <th>Chats Attended</th>
+                              <th>Total Duration</th>  
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td><span class="notavailabledot"></span> ABC</td>
+                                <td>abc@gmail</td>
+                                <td>a</td>
+                                <td>a</td>
+                              </tr>
+                              <tr class="active-row"></tr>
+                                <td> <span class="notavailabledot"></span>DEF</td>  
+                                <td>def@gmail</td>
+                                <td>b</td>
+                                <td>b</td>
+                              </tr>
+                              <tr>
+                                <td> <span class="availabledot"></span>GHI</td>
+                                <td>ghi@gmail</td>
+                                <td>c</td>
+                                <td>c</td>
+                              </tr>
+                            </tbody>
+                          </table>
                         </div>
                       </div>
-
-
-                      
-
-                </div>
-                <div class="row">
-                    
-                    
-                    <div class="col-xs-14 col-md-12">
-                    <div class="white-box">
-                    <div style="overflow-x:auto;">
-
-                      <table class="scroll" >
-                        
-                          <thead>
-                            <th>Name</th>
-                      
-                          <th>Email</th>  
-                          <th>Chats Attended</th>
-                          <th>Duration</th>
-                        
-                      </thead>
-                      <tbody>
-                        <tr>
-                         
-                             <td><span class="notavailabledot"></span> ABC</td>
-                        
-                          <td>abc@gmail</td>
-                          <td>a</td>
-                          <td>a</td>
-                
-                        </tr>
-                        <tr class="active-row">
-                          
-                          <td> <span class="notavailabledot"></span>DEF</td>
-                          
-                          <td>def@gmail</td>
-                          <td>b</td>
-                          <td>b</td>
-                        </tr>
-                        <tr>
-                          
-                          <td> <span class="availabledot"></span>GHI</td>
-                        
-                          <td>ghi@gmail</td>
-                          <td>c</td>
-                          <td>c</td>
-                        </tr>
-                        
-                      </tbody>
-                      </table>
-                    </div>
-                    </div>
                     </div>  
-                </div>  
-              </div>
+                </div> 
+
             </div>
+      </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script>
     function openForm() {
@@ -330,14 +329,14 @@
       ['Available', 1],
       ['Busy', 2],
       ]);
-      var options = {'width':350, 'height':290 ,'colors':['green','red'], 'pieHole':0.2};
+      var options = {'width':330, 'height':290 ,'colors':['#00CC33','FF3333'],'is3D':true, 'pieHole':0.2,'fontSize':11};
       var chart = new google.visualization.PieChart(document.getElementById('piechart'));
     chart.draw(data, options);
    }
     function drawCurveTypes() {
      var data = new google.visualization.DataTable();
      data.addColumn('timeofday', 'Time of Day');
-     data.addColumn('number', 'Total number of Chats');
+     data.addColumn('number', 'Number of Chats');
  
      data.addRows([
         [[8, 30, 45], 5],
@@ -353,7 +352,19 @@
         [[16, 59, 0], 42]
       ]);
      var options = {
-        'width':700, 'height':291,
+        'width':700, 
+        'height':291,
+         animation:{
+                        startup:true,
+                        duration: 1000,
+                        easing: 'in',
+                      },
+         vAxis: {
+                       title:"Number of chats"
+                      },
+                      hAxis: {
+                       title:"Time duration"
+                      },
      };
      var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
       chart.draw(data, options);
